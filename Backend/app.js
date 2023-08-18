@@ -44,7 +44,5 @@ app.get("/products", (req, res) => {
 });
 
 
-
-
 // listener
 app.listen(process.env.PORT);
