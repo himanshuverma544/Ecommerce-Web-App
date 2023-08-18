@@ -50,6 +50,12 @@ CREATE TABLE `payments` (
   `status` varchar(255) DEFAULT "PENDING" COMMENT 'else IN PROCESS, SUCCESSFUL or FAILED'
 );
 
+CREATE TABLE `shipping` (
+  `shipping_id` integer PRIMARY KEY AUTO_INCREMENT,
+  `shipping_method` VARCHAR(255),
+  `shipping_amount` integer NOT NULL
+);
+
 CREATE TABLE `coupons` (
   `coupon_id` integer PRIMARY KEY AUTO_INCREMENT,
   `coupon_code` varchar(255) UNIQUE NOT NULL,
@@ -58,7 +64,7 @@ CREATE TABLE `coupons` (
   `coupon_min_spend` integer DEFAULT 0,
   `coupon_max_spend` integer DEFAULT 2147483647,
   `coupon_created` date NOT NULL,
-  `coupon_expire` date NOT NULL
+  `coupon_expire` date NULL
 );
 
 ALTER TABLE `carts` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
