@@ -1,42 +1,84 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.ecommerce-navbar ul {
+  width: inherit;
+  height: inherit;
+  padding: 1em 0 1em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #000;
+}
+
+.ecommerce-navbar ul a {
+  font-size: 1.1em;
+  color: #FFF;
+}
+
+.ecommerce-navbar ul a.active {
+  border-bottom: 1px solid #FFF;
+}
+
+main {
+  margin: 2em 0;
+}
+
+.btn {
+  background-color: #000 !important;
+}
+
+.sign-in-btn {
+  background-color: unset !important;
+  border: unset !important;
+  font-size: 1.1em !important;
+  font-weight: 500 !important;
+}
+
+.page-cont {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.products-cont h1 {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.products-heading-col {
+  margin-bottom: 2em ;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.products-col {
+  margin: 2em 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.product-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.card {
-  padding: 2em;
+.product-image-cont {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-top: 130%;
 }
 
-.read-the-docs {
-  color: #888;
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease;
+}
+
+.product-image-cont:hover .product-image {
+  transform: scale(1.1);
+}
+
+
+.add-to-cart-btn {
+  width: 100%;
 }
