@@ -1,7 +1,6 @@
 .ecommerce-navbar ul {
   width: inherit;
-  height: inherit;
-  padding: 1em 0 1em;
+  padding: 1em 0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -18,7 +17,7 @@
 }
 
 main {
-  margin: 2em 0;
+  margin: 3em 0;
 }
 
 .btn {
@@ -38,12 +37,13 @@ main {
   min-height: 100vh;
 }
 
-.products-cont h1 {
-  text-align: center;
+.products-heading-col {
+  margin-bottom: 3em;
 }
 
-.products-heading-col {
-  margin-bottom: 2em ;
+.products-cont h1 {
+  text-align: center;
+  font-size: 2.1em;
 }
 
 .products-col {
@@ -78,7 +78,17 @@ main {
   transform: scale(1.1);
 }
 
-
 .add-to-cart-btn {
   width: 100%;
+}
+
+footer {
+  padding: 1em 0;
+  background-color: #000;
+}
+
+footer h6 {
+  text-align: center;
+  font-size: 1.1em;
+  color: #FFF;
 }
