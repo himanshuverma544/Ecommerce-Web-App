@@ -40,7 +40,7 @@ const Home = () => {
         <Container className="products-cont">
           <Row>
             <Col className="products-heading-col">
-              <h1>Buy Your Favourite Images</h1>
+              <h1>Turning Pixels into Smiles, One Frame at a Time</h1>
             </Col>
           </Row>
           <Row>
