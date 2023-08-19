@@ -31,6 +31,7 @@ const Layout = () => {
         </main>
       
         <footer>
+          <h6>Unlock the Power of Visual Storytelling with these Snapshots</h6>
         </footer>
       </Container>
     </>
