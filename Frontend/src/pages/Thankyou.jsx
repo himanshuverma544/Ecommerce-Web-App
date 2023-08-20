@@ -1,6 +1,8 @@
 const Thankyou = () => {
 
-  return <></>
+  return (
+    <></>
+  );
 }
 
 export default Thankyou;
