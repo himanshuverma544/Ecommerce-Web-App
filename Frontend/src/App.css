@@ -1,3 +1,19 @@
+/* Global */
+
+.btn {
+  background-color: #000 !important;
+}
+
+
+/* Utilities Classes */
+
+.currency {
+  margin-right: 0.25em;
+}
+
+
+/* Navbar */
+
 .ecommerce-navbar ul {
   width: inherit;
   padding: 1em 0;
@@ -16,14 +32,6 @@
   border-bottom: 1px solid #FFF;
 }
 
-main {
-  margin: 3em 0;
-}
-
-.btn {
-  background-color: #000 !important;
-}
-
 .auth-btn {
   background-color: unset !important;
   border: unset !important;
@@ -31,60 +39,35 @@ main {
   font-weight: 500 !important;
 }
 
-.the-authentication-modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-}
 
-.auth-cont {
-  min-height: 75vh;
-  min-width: 65vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px ;
-  background-color: #FFF;
-}
-
-.auth-cont form {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-}
-
-.auth-cont form h1 {
-  text-align: center;
-  font-size: 1.5em;
-}
-
-
-.form-text {
-  text-align: center;
-}
-
-.sign-in-span {
-  margin-left: 0.3em;
-  text-decoration: underline;
-  color: #000;
-  cursor: pointer;
-}
+/* Page and Main */ 
 
 .page-cont {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
+
+main {
+  margin: 3em 0;
+}
+
+
+/* Footer */
+
+footer {
+  padding: 1em 0;
+  background-color: #000;
+}
+
+footer h6 {
+  text-align: center;
+  font-size: 1.1em;
+  color: #FFF;
+}
+
+
+/* Home Page - Products */
 
 .products-heading-col {
   margin-bottom: 3em;
@@ -131,15 +114,55 @@ main {
   width: 100%;
 }
 
-footer {
-  padding: 1em 0;
-  background-color: #000;
+
+/* Authentication Modal */
+
+.the-authentication-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-footer h6 {
+.auth-cont {
+  min-height: 75vh;
+  min-width: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px ;
+  background-color: #FFF;
+}
+
+.auth-cont form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.auth-cont form h1 {
   text-align: center;
-  font-size: 1.1em;
-  color: #FFF;
+  font-size: 1.5em;
+}
+
+.form-text {
+  text-align: center;
+}
+
+.sign-in-span {
+  margin-left: 0.3em;
+  text-decoration: underline;
+  color: #000;
+  cursor: pointer;
 }
 
 
@@ -205,10 +228,3 @@ footer h6 {
   display: flex;
   justify-content: end;
 }
-
-/* Utilities Classes */
-
-.currency {
-  margin-right: 0.25em;
-}
-
