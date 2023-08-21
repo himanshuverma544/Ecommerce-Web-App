@@ -178,17 +178,37 @@ footer h6 {
   background-color: #DDD;
 }
 
+
+/* Checkout Page */
+
+.checkout-cont {
+  width: 77% !important;
+}
+
+.shipping-form {
+  padding: 4em;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+}
+
+.shipping-text {
+  font-size: 1.7em !important;
+  font-weight: 500;
+}
+
+.shipping-icon {
+  font-size: 1.5em;
+  margin-bottom: 0.25em;
+}
+
+.purchase-btn-row {
+  display: flex;
+  justify-content: end;
+}
+
 /* Utilities Classes */
 
 .currency {
   margin-right: 0.25em;
-}
-
-.auto-capitalize {
-  text-transform: capitalize;
-}
-
-.auto-uppercase {
-  text-transform: uppercase;
 }
 
