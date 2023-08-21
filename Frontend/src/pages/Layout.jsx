@@ -49,7 +49,7 @@ const Layout = () => {
               </li>
               <li>
                 <Button 
-                  className="sign-in-btn" 
+                  className="auth-btn" 
                   onClick={openAuthenticationModal}
                 >
                   {SIGN_IN.name}
