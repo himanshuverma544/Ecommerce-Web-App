@@ -38,7 +38,7 @@ const AuthenticationModal = ({ modalNode, closeModal }) => {
                   <Input 
                     name="firstName" 
                     type="text" 
-                    className="auto-capitalize" 
+                    className="text-capitalize" 
                     placeholder="Enter First Name" 
                     autoComplete="off"
                   />
@@ -47,7 +47,7 @@ const AuthenticationModal = ({ modalNode, closeModal }) => {
                   <Input 
                     name="lastName" 
                     type="text" 
-                    className="auto-capitalize" 
+                    className="text-capitalize" 
                     placeholder="Enter Last Name" 
                     autoComplete="off"
                   />
