@@ -24,7 +24,7 @@ main {
   background-color: #000 !important;
 }
 
-.sign-in-btn {
+.auth-btn {
   background-color: unset !important;
   border: unset !important;
   font-size: 1.1em !important;
@@ -68,9 +68,6 @@ main {
   font-size: 1.5em;
 }
 
-.auto-capitalize {
-  text-transform: capitalize;
-}
 
 .form-text {
   text-align: center;
@@ -144,3 +141,54 @@ footer h6 {
   font-size: 1.1em;
   color: #FFF;
 }
+
+
+/* Cart Page */
+
+.cart-heading {
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+
+.cart-items-col {
+  border-radius: 10px;
+  background-color: #f0f0f0;
+}
+
+.cart-items-col .cart-items-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-items-row > div {
+  text-align: center;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 1em 0 !important;
+}
+
+.cart-summary-col {
+  height: fit-content;
+  position: sticky;
+  top: 7%;
+  border-radius: 10px;
+  background-color: #DDD;
+}
+
+/* Utilities Classes */
+
+.currency {
+  margin-right: 0.25em;
+}
+
+.auto-capitalize {
+  text-transform: capitalize;
+}
+
+.auto-uppercase {
+  text-transform: uppercase;
+}
+
