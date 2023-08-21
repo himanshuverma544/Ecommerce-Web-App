@@ -62,7 +62,10 @@ const Home = () => {
                       className="mb-2 text-muted"
                       tag="h6"
                     >
-                      {`${CURRENCY} ${product.price}`}
+                      <span className="currency">
+                        {CURRENCY}
+                      </span>
+                      {product.price}
                     </CardSubtitle>
                     <Button className="add-to-cart-btn">
                       {ADD_TO_CART_TEXT}
