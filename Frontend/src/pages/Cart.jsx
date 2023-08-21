@@ -35,7 +35,11 @@ const Cart = () => {
                 <></>
               </Col>
             </Row>
-            <hr/>
+            <Row>
+              <Col>
+                <hr/>
+              </Col>
+            </Row>
             { Array.from({ length: 5 }, (_, index) => (
               <>
                 <Row key={index} className="cart-items-row items-row">
@@ -58,12 +62,16 @@ const Cart = () => {
                     <span className="close">&#10005;</span>
                   </Col>
                 </Row>
-                <hr/>
+                <Row>
+                  <Col>
+                    <hr/>
+                  </Col>
+                </Row>
               </>
             ))}
           </Col>
           <Col className="cart-summary-col p-5" lg="4">
-            <Row className="">
+            <Row className="summary-text-row">
               <Col>
                 <h3>Summary</h3>
               </Col>
@@ -92,7 +100,7 @@ const Cart = () => {
                 <Input
                   name="coupon"
                   type="text"
-                  className="input auto-uppercase mt-1"
+                  className="input text-uppercase mt-1"
                   placeholder="Enter Coupon Code"
                   autoComplete="off"
                 />
