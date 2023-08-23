@@ -12,20 +12,20 @@ const Home = () => {
 
   const fetchProducts = useCallback(async () => {
 
-    const URL = import.meta.env.VITE_GET_PRODUCTS_KEY;
+    const URL = import.meta.env.VITE_GET_PRODUCTS_API_ENDPOINT;
     const { data } = await axios.get(URL);
     return data;
 
   }, []);
 
 
-  const { isSuccess, data, isError, error } = useQuery({
+  const { isSuccess, data, isError } = useQuery({
     queryKey: ["products"],
     queryFn: fetchProducts
   });
 
   if (isError) {
-    console.log(error);
+    console.log("Unable to Fetch Products");
   }
 
   const products = useMemo(() => {
