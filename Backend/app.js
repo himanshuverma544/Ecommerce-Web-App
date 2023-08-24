@@ -6,6 +6,7 @@ require("dotenv").config();
 const morgan = require("morgan");
 const path = require("path");
 
+const authenticationRoute = require("./routes/AuthenticationRoute");
 const productsRoute = require("./routes/ProductsRoute");
 
 
@@ -21,6 +22,7 @@ app.use(morgan("dev"));
 
 
 // routes
+app.use("/", authenticationRoute);
 app.use("/", productsRoute);
 
 
