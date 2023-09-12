@@ -1,16 +1,85 @@
+import { useState, useRef, useCallback, useMemo } from "react";
+import { createPortal } from "react-dom";
+
 import { Link } from "react-router-dom";
 
-import { useState, useRef, useCallback } from "react";
-import { createPortal } from "react-dom";
+import axios from "axios";
+import { useMutation } from "react-query";
 
 import { Form, FormGroup, Input, Button, FormText } from "reactstrap";
 
-import { ORDERS, SIGN_IN, SIGN_OUT, TEXT_AS_PER_STATUS } from "../constants";
+import { ORDERS, SIGN_IN, SIGN_UP, SIGN_OUT, TEXT_AS_PER_STATUS } from "../constants";
 
 
 const AuthenticationModal = ({ modalNode, closeModal }) => {
 
-  const [status, setStatus] = useState(SIGN_IN.name);
+
+  const [status, setStatus] = useState(SIGN_UP.name);
+
+
+  const signUp = useCallback(async () => {
+    
+    const response = await axios.post(import.meta.env.VITE_SIGN_UP_API_ENDPOINT);
+    return response;
+
+  }, []);
+  
+  const signIn = useCallback(async () => {
+
+    const response = await axios.post(import.meta.env.VITE_SIGN_IN_API_ENDPOINT);
+    return response;
+
+  }, []);
+  
+  
+  const authMutation = {
+    signUp: useMutation(signUp),
+    signIn: useMutation(signIn)
+  };
+
+
+  const handleSubmit = useCallback(async e => {
+    e.preventDefault();
+
+    switch (status) {
+
+      case SIGN_UP.name:
+
+        const signUpFormData = new FormData(e.target);
+
+        const signUpCredentials = {
+          firstName: signUpFormData.get("firstName"),
+          lastName: signUpFormData.get("lastName"),
+          email: signUpFormData.get("email"),
+          password: signUpFormData.get("password"),
+          confirmPassword: signUpFormData.get("confirmPassword")
+        };
+        
+        await authMutation.signUp.mutateAsync(signUpCredentials);
+        break;
+
+      case SIGN_IN.name:
+
+        const signInFormData = new FormData(e.target);
+
+        const signInCredentials = {
+          email: signInFormData.get("email"),
+          password: signInFormData.get("password")
+        };
+
+        await authMutation.signIn.mutateAsync(signInCredentials);
+        break;
+
+      case SIGN_OUT.name:
+        break;
+
+      default:
+        console.log("Something's Wrong");
+    }
+  
+  }, [status, authMutation.signUp, authMutation.signIn]);
+
+
 
   const isStatusSignOut = useCallback(() => {
     return status === SIGN_OUT.name;
@@ -29,7 +98,7 @@ const AuthenticationModal = ({ modalNode, closeModal }) => {
             {ORDERS.name}
           </Link>
         }
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <h1>{TEXT_AS_PER_STATUS[status].heading}</h1>
             <hr/>
             { (!isStatusSignOut() && TEXT_AS_PER_STATUS[status].show) && 
@@ -41,6 +110,7 @@ const AuthenticationModal = ({ modalNode, closeModal }) => {
                     className="text-capitalize" 
                     placeholder="Enter First Name" 
                     autoComplete="off"
+                    required
                   />
                 </FormGroup>
                 <FormGroup>
@@ -50,6 +120,7 @@ const AuthenticationModal = ({ modalNode, closeModal }) => {
                     className="text-capitalize" 
                     placeholder="Enter Last Name" 
                     autoComplete="off"
+                    required
                   />
                 </FormGroup>
               </>
@@ -62,6 +133,7 @@ const AuthenticationModal = ({ modalNode, closeModal }) => {
                     type="email" 
                     placeholder="Enter Email" 
                     autoComplete="off"
+                    required
                   />
                 </FormGroup>
                 <FormGroup>
@@ -69,20 +141,22 @@ const AuthenticationModal = ({ modalNode, closeModal }) => {
                     name="password" 
                     type="password" 
                     placeholder="Enter Password"
+                    required
                   />
                 </FormGroup>
                 { TEXT_AS_PER_STATUS[status].show &&
                   <FormGroup>
                     <Input 
-                      name="confirm-password" 
+                      name="confirmPassword" 
                       type="password" 
                       placeholder="Confirm Password"
+                      required
                     />
                   </FormGroup>
                 }
               </>
             }
-            <Button className="sign-up-btn">
+            <Button>
               {TEXT_AS_PER_STATUS[status].name}
             </Button>
             <hr/>
@@ -97,7 +171,6 @@ const AuthenticationModal = ({ modalNode, closeModal }) => {
                 </span>
               }
             </FormText>
-            
           </Form>
         </div>
       </div>
