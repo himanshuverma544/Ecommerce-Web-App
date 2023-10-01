@@ -224,7 +224,16 @@ footer h6 {
   margin-bottom: 0.25em;
 }
 
-.purchase-btn-row {
+.mobile-number-input {
+  width: 65% !important;
+}
+
+.purchase-btn-col {
   display: flex;
   justify-content: end;
+  align-items: center;
+}
+
+.purchase-btn {
+  height: 60%;
 }
