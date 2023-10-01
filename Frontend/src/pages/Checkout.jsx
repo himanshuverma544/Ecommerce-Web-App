@@ -14,11 +14,14 @@ const Checkout = () => {
         </Row>
         <Row>
           <Col>
-            <Form className="shipping-form mt-3">
+            <Form
+              className="shipping-form mt-3"
+              onSubmit={event => event.preventDefault()}
+            >
               <Row>
                 <Col>
                   <FormText className="shipping-text">
-                    <LiaShippingFastSolid className="shipping-icon me-3" />
+                    <LiaShippingFastSolid className="shipping-icon me-3"/>
                       Shipping Details
                   </FormText>
                 </Col>
@@ -86,7 +89,7 @@ const Checkout = () => {
                         <Label>ZIP</Label>
                         <Input
                           name="zip"
-                          type="text"
+                          type="number"
                           className="text-capitalize"
                           autoComplete="off"
                         />
@@ -95,9 +98,20 @@ const Checkout = () => {
                   </Row>
                 </Col>
               </Row>
-              <Row className="purchase-btn-row mt-3">
-                <Col sm="auto">
-                  <Button className="purchase-btn py-2 px-5">
+              <Row className="purchase-btn-row">
+                <Col className="mobile-number-col" sm="6">
+                  <FormGroup>
+                    <Label>MOBILE NUMBER</Label>
+                    <Input
+                      className="mobile-number-input"
+                      name="mobile"
+                      type="number"
+                      autoComplete="off"
+                    />
+                  </FormGroup>
+                </Col>
+                <Col className="purchase-btn-col" sm="6">
+                  <Button className="purchase-btn px-5">
                     PURCHASE
                   </Button>
                 </Col>
