@@ -46,7 +46,7 @@ const Home = () => {
           <Row>
             {products.map(product => (
               <Col key={product.product_id} className="products-col" md="4" lg="3">
-                <Card>
+                <Card className={product.product_name} data-product_id={product.product_id}>
                   <div className="product-image-cont">
                     <img
                       className="product-image"
