@@ -1,7 +1,7 @@
 1. Authentication:
 
-i. Authenticate user using JWT.
-ii. On Sign Up check for all validations and then create the user in database.
+i. Authenticate the user using JWT.
+ii. On Sign Up check for all validations and then create the user in the database.
 
 > Query: INSERT INTO users ( first_name, last_name, email, password ) VALUES ( $first_name, $last_name, $email, $hashedPassword);
 
