@@ -1,0 +1,1 @@
+- DB Schema: https://dbdiagram.io/d/eCommerce-Web-App-64d65ae502bd1c4a5ea451c4
