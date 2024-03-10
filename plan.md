@@ -49,8 +49,11 @@ iii. Store the required values in the cart_items table.
 B. a. When the user updates the quantity of the product: On the Homepage
 
  i. Pull up the product ID from the data-product_id attribute.
+ 
  ii. Let the user set the final quantity. Make sure to use the cancel token to avoid multiple API request.
+ 
  iii. Make an API post request and send the values of product id, quantity and cart_id.
+ 
  iv. Now, update the required cart_item in the cart_items table.
 
  > Query: UPDATE cart_items SET quantity = $quantity WHERE cart_id = $cart_id AND product_id = $product_id;
@@ -58,6 +61,7 @@ B. a. When the user updates the quantity of the product: On the Homepage
 b. On Product Page
 
 i. Let the user set the quantity, by default keep quantity 1.
+
 ii. When the user hits the Add to Cart button, pull out the product ID, and quantity and then hit the API post request and add the quantity of the product with the existing previous quantity.
 
 > QUERY: UPDATE cart_items SET quantity = $quantity + $newQuantity WHERE cart_id = $cart_id AND product_id = $product_id;
