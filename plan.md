@@ -33,6 +33,8 @@ iii. When adding from the product page, show the toast message that how many ite
 
 # => Backend
 
+# A.
+
 i. As soon as the user adds the product, create the cart. Get the user ID from the response you received earlier from the sign-in.
 
 > Query: INSERT INTO carts (user_id) VALUES ($user_id);
@@ -46,7 +48,9 @@ iii. Store the required values in the cart_items table.
 > Query: INSERT INTO cart_items (cart_id, product_id, quantity) VALUES ($cart_id, $data-product_id, $Quantity);
 
 
-B. a. When the user updates the quantity of the product: On the Homepage
+# B. 
+
+a. When the user updates the quantity of the product: On the Homepage
 
  i. Pull up the product ID from the data-product_id attribute.
  
@@ -66,7 +70,8 @@ ii. When the user hits the Add to Cart button, pull out the product ID, and quan
 
 > QUERY: UPDATE cart_items SET quantity = $quantity + $newQuantity WHERE cart_id = $cart_id AND product_id = $product_id;
 
-C. Handling Removing of item: On Homepage, Product, Cart
+
+# C. Handling Removing of item: On Homepage, Product, Cart
 
 i. Once the remove item button is clicked, hit the API post request send the cart_id and product_id and then delete the cart item from the database.
 
