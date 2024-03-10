@@ -26,7 +26,9 @@ viii. Make the required changes in the app such as enabling users to "Add Items 
 # => Frontend
 
 i. When the user signs in give the ability to the user to add items to the cart from the homepage as well as the product page.
-ii. Upon adding the product on homepage, change the "Add to Cart" button to the "Quantity" button and also show the user the "Remove Item" button to remove the item from the cart as well as take care of the "Visit Cart" button.
+
+ii. Upon adding the product on the homepage, change the "Add to Cart" button to the "Quantity" button and also show the user the "Remove Item" button to remove the item from the cart as well as take care of the "Visit Cart" button.
+
 iii. When adding from the product page, show the toast message that how many items the user has added and also show him the button to remove the item and go to the cart page.
 
 # => Backend
