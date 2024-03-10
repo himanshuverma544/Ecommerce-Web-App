@@ -82,22 +82,20 @@ i. Once the remove item button is clicked, hit the API post request send the car
 
 i. Show the cart items by fetching data from the API aka database.
 
-> QUERY:
-
-  SELECT
-    p.product_image_url,
-    p.product_name,
-    p.price,
-    ci.quantity,
-    (p.price * ci.quantity) AS subtotal
-  FROM
-    products AS p
-  JOIN
-    cart_items AS ci
-  ON
-    p.product_id = ci.product_id
-  WHERE
-    ci.cart_id = $cart_id;
+> QUERY: SELECT
+          p.product_image_url,
+          p.product_name,
+          p.price,
+          ci.quantity,
+          (p.price * ci.quantity) AS subtotal
+        FROM
+          products AS p
+        JOIN
+          cart_items AS ci
+        ON
+          p.product_id = ci.product_id
+        WHERE
+          ci.cart_id = $cart_id;
 
 ii. Calculate the $SUBTOTAL of the Summary section and store it safely for further use, making the user use the previous value method for better performance in calculating $SUBTOTAL.
 
