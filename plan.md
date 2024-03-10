@@ -21,7 +21,7 @@ vii. Return the user details as a response, we will use it in our app for furthe
 viii. Make the required changes in the app such as enabling users to "Add Items to the Cart", change the login modal, and on navbar show the name of the user.
 
 
-2. A. When user add items to the cart:
+# 2. A. When user add items to the cart:
 
 => Frontend
 
@@ -67,7 +67,7 @@ i. Once remove item button got clicked, hit the API post request and send the ca
 > Query: DELETE FROM cart_items WHERE cart_id = $cart_id AND product_id = $product_id;
 
 
-3. On Cart Page
+# 3. On Cart Page
 
 i. Show the cart items by fetching data from the API aka database.
 
@@ -110,7 +110,7 @@ check in the database and give response accordingly.
 Store the shipping_id for further use.
 
 
-4. What happens when the user click purchase on the checkout page.
+# 4. What happens when the user click purchase on the checkout page.
 
 i. Make the payment using Stripe, and handle the response status accordingly.
 
@@ -167,7 +167,7 @@ Now, fill up the data.
     INSERT INTO order_details (order_id, coupon_id, shipping_id) VALUES ($order_id, $coupon_id, $shipping_id);
 
 
-5. When user check its orders.
+# 5. When user check its orders.
 
 Collecting all orders list and the particular order details:
 
