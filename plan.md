@@ -6,49 +6,49 @@ ii. On Sign Up check for all validations and then create the user in the databas
 
 > Query: INSERT INTO users ( first_name, last_name, email, password ) VALUES ( $first_name, $last_name, $email, $hashedPassword);
 
-iii. As soon as the user sign up we will use next() and hit the Sign In route, and create a JWT access token so user doesn't need to explicitly Sign In up.
+iii. As soon as the user signs up we will use next() and hit the Sign In route, and create a JWT access token so the user doesn't need to Sign In explicitly.
 
-iv. If user closes the browser, opens up the app back sign in the user up, using the JWT within the expiry time and retrieve the user information from the payload.
+iv. If the user closes the browser, opens up the app and sign in the user up, using the JWT within the expiry time and retrieves the user information from the payload.
 
 v. On every Sign in create a new JWT for a user which contains id, firstName, lastName and email, but before that verify the user credentials in the database.
 
 > Query: SELECT password FROM users where email= $email;
 
-vi. Don't forget to encrypt and verify the password using "bcrypt" package, you have to use the above query for database to get the user hashedPassword.
+vi. Don't forget to encrypt and verify the password using "bcrypt" package, you have to use the above query for the database to get the user-hashed password.
 
-vii. Return the user details as a response, we will use it in our app for further user related requirements.
+vii. Return the user details as a response, we will use it in our app for further user-related requirements.
 
-viii. Make the required changes in the app such as enabling users to "Add Items to the Cart", change the login modal, and on navbar show the name of the user.
+viii. Make the required changes in the app such as enabling users to "Add Items to the Cart", change the login modal, and on navbar show the user's name.
 
 
-# 2. A. When user add items to the cart:
+# 2. A. When the user adds items to the cart:
 
-=> Frontend
+# => Frontend
 
-i. When the user signs in give the ability to the user to add items to the cart from the homepage as well as product page.
-ii. Upon adding the product on homepage, change the "Add to Cart" button to "Quantity" button and also show the user the "Remove Item" button to remove the item from the cart as well take care of the "Visit Cart" button.
-iii. When adding from the product page, show the toast message that how many items does the user has added and also show him the button to remove the item and go to cart page.
+i. When the user signs in give the ability to the user to add items to the cart from the homepage as well as the product page.
+ii. Upon adding the product on homepage, change the "Add to Cart" button to the "Quantity" button and also show the user the "Remove Item" button to remove the item from the cart as well as take care of the "Visit Cart" button.
+iii. When adding from the product page, show the toast message that how many items the user has added and also show him the button to remove the item and go to the cart page.
 
-=> Backend
+# => Backend
 
-i. As soon as the user add the product, create the cart. Get the user id from the response you received earlier from the sign in.
+i. As soon as the user adds the product, create the cart. Get the user ID from the response you received earlier from the sign-in.
 
 > Query: INSERT INTO carts (user_id) VALUES ($user_id);
 
-ii. Pull the value of user cart_id from the database and value of the added product data-product_id and the Quantity.
+ii. Pull the value of user cart_id from the database and the value of the added product data-product_id and the Quantity.
 
 > Query: SELECT cart_id FROM carts WHERE user_id = $user_id;
 
-iii. Store the required values in cart_items table.
+iii. Store the required values in the cart_items table.
 
 > Query: INSERT INTO cart_items (cart_id, product_id, quantity) VALUES ($cart_id, $data-product_id, $Quantity);
 
 
-B. a. When user updated the quantity of the product: On Homepage
+B. a. When the user updates the quantity of the product: On the Homepage
 
- i. Pull up the product id from data-product_id attribute.
- ii. Let the user set the final quantity. Make sure to use cancel token to avoid multiple API request.
- iii. Make a API post request and send the values of product id, quantity and cart_id.
+ i. Pull up the product ID from the data-product_id attribute.
+ ii. Let the user set the final quantity. Make sure to use the cancel token to avoid multiple API request.
+ iii. Make an API post request and send the values of product id, quantity and cart_id.
  iv. Now, update the required cart_item in the cart_items table.
 
  > Query: UPDATE cart_items SET quantity = $quantity WHERE cart_id = $cart_id AND product_id = $product_id;
@@ -56,13 +56,13 @@ B. a. When user updated the quantity of the product: On Homepage
 b. On Product Page
 
 i. Let the user set the quantity, by default keep quantity 1.
-ii. When the user hit Add to Cart button, pull out the product id, quantity and then hit the API post request and add the the quantity of the product with the existed previous quantity.
+ii. When the user hits the Add to Cart button, pull out the product ID, and quantity and then hit the API post request and add the quantity of the product with the existing previous quantity.
 
 > QUERY: UPDATE cart_items SET quantity = $quantity + $newQuantity WHERE cart_id = $cart_id AND product_id = $product_id;
 
-C. Handling Removing of item : On Homepage, Product, Cart
+C. Handling Removing of item: On Homepage, Product, Cart
 
-i. Once remove item button got clicked, hit the API post request and send the cart_id and product_id and then delete the cart item from the database.
+i. Once the remove item button is clicked, hit the API post request send the cart_id and product_id and then delete the cart item from the database.
 
 > Query: DELETE FROM cart_items WHERE cart_id = $cart_id AND product_id = $product_id;
 
@@ -88,45 +88,45 @@ i. Show the cart items by fetching data from the API aka database.
   WHERE
     ci.cart_id = $cart_id;
 
-ii. Calculate the $SUBTOTAL of Summary section and store it safe for further use, make user to use the previous value method for better performance in calculating $SUBTOTAL.
+ii. Calculate the $SUBTOTAL of the Summary section and store it safely for further use, making the user use the previous value method for better performance in calculating $SUBTOTAL.
 
 iii. Populate the SHIPPING dropdown by pulling the values from the database.
 
 > Query: SELECT shipping_method, shipping_amount FROM shipping;
 
-iv. Handle coupon when entered by user, check for the coupon in database.
+iv. Handle coupon when entered by the user, check for the coupon in the database.
 
 > Query: SELECT * FROM coupons WHERE coupon_code = $coupon_code;
 
-v. Handle the coupon as per the conditions and show appropriate message.
+v. Handle the coupon as per the conditions and show the appropriate message.
 
-vi. When user click on the Checkout button, before moving to the checkout page verify the shipping method at the backend so, it keeps malicious users away.
+vi. When the user clicks on the Checkout button, before moving to the checkout page verify the shipping method at the backend so, it keeps malicious users away.
 
-First pull out the shipping_id, shipping_method and shipping_amount values from the client-end and then 
-check in the database and give response accordingly.
+First pull out the shipping_id, shipping_method and shipping_amount values from the clientend and then 
+check in the database and give a response accordingly.
 
 > Query: SELECT shipping_id FROM shipping WHERE shipping_id = $shipping_id, shipping_method = $shipping_method AND shipping_amount = $shipping_amount;
 
 Store the shipping_id for further use.
 
 
-# 4. What happens when the user click purchase on the checkout page.
+# 4. What happens when the user clicks purchase on the checkout page?
 
 i. Make the payment using Stripe, and handle the response status accordingly.
 
-a. If payment failed - Pull the cart_id and put it in the orders table and set status as "Failed" and let the rest of the attributes to be taken by default.
+a. If payment failed - Pull the cart_id and put it in the orders table set the status as "Failed" and let the rest of the attributes be taken by default.
 
 > Query: INSERT INTO orders (cart_id, status) VALUES ($cart_id, "FAILED");
 
-b. If payment succeed - Pull the cart_id and put it in the orders table and rest of the table attributes value will be taken by default.
+b. If the payment succeeds - Pull the cart_id and put it in the orders table and the rest of the table attributes value will be taken by default.
 
 > Query: INSERT INTO orders (cart_id) VALUES $cart_id;
 
-c. If there is delay in payment - Let the user know this, and set the order status as "PENDING". Later, handle it as per the status and let the user know everything.
+c. If there is a delay in payment - Let the user know this, and set the order status as "PENDING". Later, handle it as per the status and let the user know everything.
 
 > Query: INSERT INTO orders (cart_id, status) VALUES ($cart_id, "PENDING");
 
-ii. Now, pull the cart_items from Redux, local storage or database as per condition and then insert them into order_items table.
+ii. Now, pull the cart_items from Redux, local storage or database as per condition and then insert them into the order_items table.
 
 > Query:
     INSERT INTO order_items (order_id, product_id, quantity)
@@ -136,7 +136,7 @@ ii. Now, pull the cart_items from Redux, local storage or database as per condit
       ON o.cart_id = ci.cart_id
       WHERE ci.cart_id = $cart_id;
 
-iii. Now, calculate the order_items products price total at the backend and verify the value with the $SUBTOTAL, if it matches proceed, if not update the $SUBTOTAL value with the result of query from the database.
+iii. Now, calculate the order_items products price total at the backend and verify the value with the $SUBTOTAL, if it matches proceed, if not update the $SUBTOTAL value with the result of the query from the database.
 
 > Query:
     SELECT SUM(p.price) AS total_price FROM order_items AS oi JOIN products AS p ON oi.product_id = p.product_id;
@@ -167,7 +167,7 @@ Now, fill up the data.
     INSERT INTO order_details (order_id, coupon_id, shipping_id) VALUES ($order_id, $coupon_id, $shipping_id);
 
 
-# 5. When user check its orders.
+# 5. When the user checks its orders.
 
 Collecting all orders list and the particular order details:
 
